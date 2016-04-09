@@ -71,3 +71,33 @@ http.createServer((req, res) => {
   - internal events such as open a file
 - Node implements a non-blocking event driven approach
 - Different from traditional server side programming model, which requires multiple threads to achieve such concurrency
+
+### Writing asynchronous code
+
+- A typical approach which is blocking
+```js
+var conn = getDbConnection(connectionString);
+var stmt = conn.createStatement();
+var results = stmt.executeQuery(sqlQuery);
+for (var i = 0; i < results.length; i++) {
+  // print results[i];
+}
+```
+
+- An asynchronous "non-blocking" approach uses function callbacks so that node doesn't have to wait (Eg: when getting database connection)
+```js
+getDbConnection(connectionString, function(err, conn) {
+  conn.createStatement(function(err, stmt) {
+    var results = stmt.executeQuery(sqlQuery);
+    results.on('row', function(result) {
+      // print result
+    });
+  });
+});
+```
+
+### Convention for asynchronous functions with callbacks
+- Callback is the last parameter in async function call
+
+
+getStuff(inputParam, handleRequests);
