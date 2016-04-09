@@ -97,7 +97,24 @@ getDbConnection(connectionString, function(err, conn) {
 ```
 
 ### Convention for asynchronous functions with callbacks
-- Callback is the last parameter in async function call
+
+1. Callback is the last parameter in async function call. Eg: getStuff
+2. Error is the first parameter to callback function. Eg: handleRequests  
 
 
+- Named function as callbacks
+```js
+var handleRequests = function(error, results) {
+  // if error is undefined ..
+  // do something with results
+}
 getStuff(inputParam, handleRequests);
+```
+
+- For simple callbacks, anonymous functions are more common
+```js
+getStuff(inputParam, function(error, results){
+  //if error is undefined
+  // do something with results
+})
+```
