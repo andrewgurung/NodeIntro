@@ -62,3 +62,12 @@ http.createServer((req, res) => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 ```
+### Node's Event Loop
+- Node brings the key concept of `Event Loop` from browser
+- Browsers constantly listen for DOM events such as mouse clicks
+- Similarly Node's event loop is listening for events on server side
+  - External http request
+  - timers
+  - internal events such as open a file
+- Node implements a non-blocking event driven approach
+- Different from traditional server side programming model, which requires multiple threads to achieve such concurrency
