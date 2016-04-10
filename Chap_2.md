@@ -26,7 +26,7 @@ console.log( justOne() );
 
 #### Three sources of Node Modules
 1. Built-in Modules
-2. Custom Modules
+2. Custom Modules (Your Project's files)
 3. 3rd Party Modules
 
 ### Built-in Modules
@@ -58,8 +58,23 @@ Host: Andrews-MBP.fios-router.home
 */
 ```
 
+### Custom Modules (Your Project's files)
+- Using require() to Modularize Your Application
+- Each .js file is its own module which can be exported
+- Each file is `require()'d` with file system-like semantic
+  - Same directory: `var data = require('./data');`
+  - Other sub directory: `var foo = require('./other/foo');`
+  - Up and over other directory: `var bar = require('../lib/bar');`
 
-### Using require() to Modularize Your Application
+#### Variables are marked for export via `module.exports`
+```js
+var count = 2;
+var doIt = function(){ };
+
+module.exports.doIt = doIt;
+module.exports.greeting = 'Hello World';
+```
+
 ### Demo: Accessing Application Files with require()
 ### Finding 3rd Party Modules via NPM
 ### Demo: Installing and Using 3rd Party Modules
