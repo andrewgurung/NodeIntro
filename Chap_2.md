@@ -27,7 +27,7 @@ console.log( justOne() );
 #### Three sources of Node Modules
 1. Built-in Modules
 2. Custom Modules (Your Project's files)
-3. 3rd Party Modules
+3. Third Party Modules
 
 ### Built-in Modules
 - Come pre-packaged with Node
@@ -149,6 +149,39 @@ module.exports.greeting = 'Hello World';
 
   ```
 
-### Finding 3rd Party Modules via NPM
+### Third Party Modules
+- Third party modules can be installed via node package manager(NPM)
+- Can be `require()'d` like regular modules
+- Some modules can provide command line utilities that can be installed globally using `-g` flag. Eg express, mocha
+- Syntax: Install 3rd party module into `node_modules` folder
+  ```js
+  npm install module_name
+  ```
+
 ### Demo: Installing and Using 3rd Party Modules
+- 3rd Party Modules can be found at https://www.npmjs.com
+
+Eg: Install `request` which is a Simplified HTTP request client
+
+- Navigate to source code folder where the JS file is located
+- Install `request` Module from the `npm` registry
+  ```shell
+  $ npm install request
+  ```
+- Run script
+
+```js
+// require() 3rd party npm module
+
+var request = require('request');
+
+request('http://www.pluralsight.com/', function(error, response, body) {
+  if(!error && response.statusCode === 200) {
+    console.log(body);
+  }
+});
+
+// Output: Return the homepage of http://andrewgurung.github.io
+```
+
 ### Publishing Your Own Module, Conclusion
