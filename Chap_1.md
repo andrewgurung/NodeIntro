@@ -123,5 +123,59 @@ getStuff(inputParam, function(error, results){
 - Writing asynchronous code for Node.js using callbacks
 
 ```js
+var maxTime = 1000;
 
+// If input is even, double it
+// If input is odd, error
+// (call takes random amount of time < 1s)
+// callback is the last parameter
+var evenDoubler = function(v, callback) {
+  var waitTime = Math.floor(Math.random()*(maxTime+1));
+  if(v%2) {
+    setTimeout(function() {
+      callback(new Error("Odd input"));
+    }, waitTime);
+  } else {
+    setTimeout(function(){
+      callback(null, v*2, waitTime);
+    }, waitTime);
+  }
+};
+
+// Error is the first parameter of a callback function
+var handleRequests = function(err, result, time) {
+  if(err) {
+    console.log( "ERROR:" + err.message );
+  } else {
+    console.log( "The results are: " + result + " (" + time + "ms )" );
+  }
+};
+
+for(var i = 1; i <= 5; i++) {
+  console.log( "Calling evenDoubler for value: " + i );
+  evenDoubler(i, handleRequests);
+};
+
+console.log( "----" );
+
+/*----------------
+ Output:
+ -----------------
+Calling evenDoubler for value: 1
+Calling evenDoubler for value: 2
+Calling evenDoubler for value: 3
+Calling evenDoubler for value: 4
+Calling evenDoubler for value: 5
+----
+ERROR:Odd input
+ERROR:Odd input
+ERROR:Odd input
+The results are: 4 (876ms )
+The results are: 8 (930ms )
+*/
 ```
+
+Things to note:
+- `evenDoubler(..)` is asynchronously processed, so you can see `----` in the middle of the output even though it was the last line of code in the programming
+- Even though `Calling evenDoubler for value: ..` is printed serially, its output isn't printed serially
+- The `evenDoubler(..)` function is executed asynchronously so the output cannot be controlled
