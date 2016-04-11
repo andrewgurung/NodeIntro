@@ -185,3 +185,15 @@ request('http://www.pluralsight.com/', function(error, response, body) {
 ```
 
 ### Publishing Your Own Module, Conclusion
+- https://docs.npmjs.com/getting-started/creating-node-modules
+- https://docs.npmjs.com/getting-started/publishing-npm-packages
+
+Steps:
+- Create a package.json(located in project root) with your project metadata
+- Alternately you can run `npm init` to create package.json
+- Fill the `main` property of package.json with your entry JS file name
+- Creating a user
+  ```shell
+  $ npm adduser
+  ```
+- npm publish
