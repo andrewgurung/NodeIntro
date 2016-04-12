@@ -41,6 +41,18 @@ results.on('error', function(err) {
 });
 ```
 
+#### Node's `EventEmitter` class
+- Provides a construct to build event driven interfaces
+- Consists of:
+  - The publisher: `emitter.emit(event, [args])`
+  - The subscriber: `emitter.on(event, listener)`
+- The `event` can be any string. Eg: item, done, error
+- The publisher event can emit zero or more arguments
+
+Common patterns for EventEmitter:
+1. Returning an EventEmitter from a function
+2. Objects that extend EventEmitter to emit events themselves
+
 ### Demo: Returning an EventEmitter from a function
 ### Demo: Inheriting from EventEmitter
 ### Readable and Writable Streams, the Pipe function
