@@ -54,6 +54,8 @@ Common patterns for EventEmitter:
 2. Objects that extend EventEmitter to emit events themselves
 
 ### Demo: Returning an EventEmitter from a function
+Refer: `Source_Code/1-events.js`
+
 ### Demo: Inheriting from EventEmitter
 ### Readable and Writable Streams, the Pipe function
 ### Demo: Readable and Writable Streams
