@@ -57,6 +57,9 @@ Common patterns for EventEmitter:
 Refer: `Source_Code/1-events.js`
 
 ### Demo: Inheriting from EventEmitter
+Refer: `Source_Code/2-ext-emitter.js`
+       `Source_Code/resource.js`
+
 ### Readable and Writable Streams, the Pipe function
 ### Demo: Readable and Writable Streams
 ### Demo: Piping Between Streams
